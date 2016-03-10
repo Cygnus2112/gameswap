@@ -28,7 +28,9 @@ angular.module('auth.service', [])
 	};
 
 	var isAuth = function () {
-    	return !!$window.localStorage.getItem('com.gameswap');
+		var auth = !!$window.localStorage.getItem('com.gameswap');    	
+		return auth;
+    	//return !!$window.localStorage.getItem('com.gameswap');
   	};
 
   	var signOut = function () {

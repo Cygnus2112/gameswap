@@ -1,14 +1,14 @@
 angular.module('index.controller', [])
-.controller('IndexController', function(AuthServices, IndexServices) {
-  if (AuthServices.isAuth()) {
-    this.isAuth = true;
-  } else {
-      this.isAuth = false;
-  }  
- 
-  IndexServices.checkState();
+.controller('IndexController', function(AuthServices, $scope) {
+	var index = this;
+	$scope.authServices = AuthServices;
+  index.isAuth = AuthServices.isAuth();
+  $scope.$watch('authServices.isAuth()', function(authVal) {
+    index.isAuth = authVal;
+  }); 
 
-  this.signOut = function(){
+  index.signOut = function(){
     AuthServices.signOut();
+    index.isAuth = false;
   };
 });

@@ -10,8 +10,7 @@ angular
   	'ui.router',
     'messages.controller',
     'messages.service',
-    'index.controller',
-    'index.services'])
+    'index.controller'])
 
   .config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
@@ -57,9 +56,8 @@ angular
   };
   return attach;
 })
-.run(function ($rootScope, $location, AuthServices, IndexServices) {
+.run(function ($rootScope, $location, AuthServices) {
   $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
-    IndexServices.checkState();
     if (toState.authenticate && !AuthServices.isAuth()) {
       e.preventDefault();
       $location.path('/signin');      
