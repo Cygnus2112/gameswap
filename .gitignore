@@ -1,0 +1,9 @@
+client/bower_components
+node_modules/
+npm-debug.log
+server/utilities.js
+client/assets
+.DS_Store
+bower_components/
+client/.DS_Store
+client/auth/.DS_Store
